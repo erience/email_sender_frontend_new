@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --snow: #fafdff;
+  --white: #fff;
+  --shadow-black: rgba(0, 0, 0, 0.05);
+  --shadow-black-2: rgba(0, 0, 0, 0.25);
+  --shadow-black-3: rgba(0, 0, 0, 0.5);
+}
+
+body {
+  background: var(--snow);
+  font-family: "Karla", sans-serif;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.5s infinite linear;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.8),
+    transparent
+  );
+  background-size: 200% 100%;
+}
+
+/* ──────────────────────────────────────────────
+   Global scrollbar styles
+   1. WebKit (Chrome, Edge, Safari, Opera)
+   2. Firefox
+   3. High-contrast fallback
+   ──────────────────────────────────────────────*/
+
+/* 1 ─── WebKit browsers */
+
+/* Light mode */
+:root {
+  --tw-scrollbar-track: #f3f4f6; /* gray-100  */
+  --tw-scrollbar-thumb‐from: #93c5fd; /* blue-300  */
+  --tw-scrollbar-thumb‐to: #6366f1; /* indigo-500*/
+  --tw-scrollbar-thumb‐from‐hover: #60a5fa; /* blue-400  */
+  --tw-scrollbar-thumb‐to‐hover: #4f46e5; /* indigo-600*/
+  --tw-scrollbar-thumb‐ff: #6366f1;
+}
+
+/* Dark mode */
+.dark {
+  --tw-scrollbar-track: #1f2937; /* gray-800  */
+  --tw-scrollbar-thumb‐from: #2563eb; /* blue-600  */
+  --tw-scrollbar-thumb‐to: #4f46e5; /* indigo-600*/
+  --tw-scrollbar-thumb‐from‐hover: #1d4ed8; /* blue-700  */
+  --tw-scrollbar-thumb‐to‐hover: #4338ca; /* indigo-700*/
+  --tw-scrollbar-thumb‐ff: #4f46e5;
+}
+
+::-webkit-scrollbar {
+  width: 10px; /* vertical */
+  height: 10px; /* horizontal */
+}
+
+::-webkit-scrollbar-track {
+  background: var(--tw-scrollbar-track); /* ✔ dark-mode via CSS var */
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    var(--tw-scrollbar-thumb‐from),
+    var(--tw-scrollbar-thumb‐to)
+  );
+  border-radius: 8px;
+  border: 2px solid transparent; /* gives “padding” */
+  background-clip: content-box; /* keeps border visible */
+  transition: background 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    var(--tw-scrollbar-thumb‐from‐hover),
+    var(--tw-scrollbar-thumb‐to‐hover)
+  );
+}
+
+/* 2 ─── Firefox */
+* {
+  scrollbar-width: thin; /* "auto" | "thin" | "none" */
+  scrollbar-color: var(--tw-scrollbar-thumb‐ff) var(--tw-scrollbar-track);
+}
+
+/* 3 ─── Windows high-contrast mode (optional but polite) */
+@media (forced-colors: active) {
+  ::-webkit-scrollbar-thumb {
+    background: CanvasText;
+  }
+  ::-webkit-scrollbar-track {
+    background: Canvas;
+  }
+}
