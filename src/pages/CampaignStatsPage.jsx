@@ -58,6 +58,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import toast from "react-hot-toast";
+import CampaignLogs from "../components/CampaignLogs";
 
 const CampaignStatsPage = () => {
   const { id: campaignId } = useParams();
@@ -66,6 +67,7 @@ const CampaignStatsPage = () => {
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [activeTab, setActiveTab] = useState("overview");
+  const token = localStorage.getItem("authToken");
 
   useEffect(() => {
     fetchStats();
@@ -782,36 +784,70 @@ const CampaignStatsPage = () => {
                 <div className="p-6">
                   <div className="h-80">
                     <ResponsiveContainer width="100%" height="100%">
-                      <BarChart data={subCampaignChartData}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
-                        <XAxis dataKey="name" stroke="#6B7280" />
-                        <YAxis stroke="#6B7280" />
+                      <BarChart
+                        data={subCampaignChartData}
+                        barCategoryGap="20%"
+                      >
+                        <CartesianGrid
+                          strokeDasharray="3 3"
+                          stroke="#f3f4f6"
+                          className="dark:stroke-gray-700"
+                          vertical={false}
+                        />
+                        <XAxis
+                          dataKey="name"
+                          stroke="#6B7280"
+                          className="dark:stroke-gray-300"
+                          tick={{ fontSize: 12, fontWeight: 500 }}
+                          axisLine={false}
+                          tickLine={false}
+                        />
+                        <YAxis
+                          stroke="#6B7280"
+                          className="dark:stroke-gray-300"
+                          tick={{ fontSize: 12 }}
+                          axisLine={false}
+                          tickLine={false}
+                        />
                         <Tooltip
                           contentStyle={{
-                            backgroundColor: "rgba(255, 255, 255, 0.95)",
-                            border: "1px solid #E5E7EB",
+                            backgroundColor: "rgba(255, 255, 255, 0.97)",
+                            border: "none",
                             borderRadius: "12px",
-                            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)",
+                            boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+                            padding: "12px 16px",
+                            fontSize: "14px",
+                            fontWeight: "500",
+                          }}
+                          cursor={{ fill: "rgba(59, 130, 246, 0.05)" }}
+                          labelStyle={{
+                            color: "#1f2937",
+                            fontWeight: "600",
+                            marginBottom: "4px",
+                          }}
+                          itemStyle={{
+                            color: "#374151",
+                            padding: "2px 0",
                           }}
                         />
                         <Legend />
                         <Bar
                           dataKey="deliveryRate"
-                          fill="#3B82F6"
                           name="Delivery Rate %"
-                          radius={[4, 4, 0, 0]}
+                          radius={[8, 8, 0, 0]}
+                          fill="#3B82F6"
                         />
                         <Bar
                           dataKey="openRate"
-                          fill="#10B981"
                           name="Open Rate %"
-                          radius={[4, 4, 0, 0]}
+                          radius={[8, 8, 0, 0]}
+                          fill="#10B981"
                         />
                         <Bar
                           dataKey="clickRate"
-                          fill="#F59E0B"
                           name="Click Rate %"
-                          radius={[4, 4, 0, 0]}
+                          radius={[8, 8, 0, 0]}
+                          fill="#F59E0B"
                         />
                       </BarChart>
                     </ResponsiveContainer>
@@ -1043,6 +1079,44 @@ const CampaignStatsPage = () => {
               </div>
             </div>
           )}
+          <div className="space-y-8 mt-8 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+            <div className="bg-gradient-to-r from-gray-50 via-blue-50 to-indigo-50 dark:from-gray-800 dark:via-blue-900/20 dark:to-indigo-900/20 p-6 border-b border-gray-200 dark:border-gray-700">
+              <div className="flex items-center space-x-3">
+                <div className="p-2 bg-gradient-to-br from-indigo-100 to-purple-100 dark:from-indigo-900/50 dark:to-purple-900/50 rounded-xl">
+                  <FiActivity className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                    Email Events & Activity Logs
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                    Monitor real-time events and browse historical campaign data
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="p-6">
+              {token ? (
+                <CampaignLogs
+                  channel="campaign"
+                  channelId={campaignId}
+                  token={token}
+                />
+              ) : (
+                <div className="text-center py-12">
+                  <div className="p-4 bg-red-100 dark:bg-red-900/50 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <FiAlertCircle className="w-8 h-8 text-red-500" />
+                  </div>
+                  <p className="text-red-600 dark:text-red-400 font-medium">
+                    Authentication Required
+                  </p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                    Please log in to view campaign logs
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </AppLayout>

@@ -26,7 +26,7 @@ import {
 } from "react-icons/fi";
 import toast from "react-hot-toast";
 
-const WS_URL = "ws://localhost:7001";
+const WS_URL = import.meta.env.VITE_WS_KEY;
 
 const CampaignLogs = ({ channel, channelId, token }) => {
   // Real-time logs state with pagination
@@ -211,62 +211,62 @@ const CampaignLogs = ({ channel, channelId, token }) => {
     const configs = {
       delivered: {
         color:
-          "text-green-700 dark:text-green-300 bg-green-100 dark:bg-green-900/30 border-green-200 dark:border-green-800",
+          "text-green-700 dark:text-green-300 !bg-green-100 dark:!bg-green-900/30 border-green-200 dark:border-green-800",
         icon: "✓",
       },
       opened: {
         color:
-          "text-blue-700 dark:text-blue-300 bg-blue-100 dark:bg-blue-900/30 border-blue-200 dark:border-blue-800",
+          "text-blue-700 dark:text-blue-300 !bg-blue-100 dark:!bg-blue-900/30 border-blue-200 dark:border-blue-800",
         icon: "👁",
       },
       unique_opened: {
         color:
-          "text-indigo-700 dark:text-indigo-300 bg-indigo-100 dark:bg-indigo-900/30 border-indigo-200 dark:border-indigo-800",
+          "text-indigo-700 dark:text-indigo-300 !bg-indigo-100 dark:!bg-indigo-900/30 border-indigo-200 dark:border-indigo-800",
         icon: "👁",
       },
       hard_bounce: {
         color:
-          "text-red-700 dark:text-red-300 bg-red-100 dark:bg-red-900/30 border-red-200 dark:border-red-800",
+          "text-red-700 dark:text-red-300 !bg-red-100 dark:!bg-red-900/30 border-red-200 dark:border-red-800",
         icon: "❌",
       },
       soft_bounce: {
         color:
-          "text-yellow-700 dark:text-yellow-300 bg-yellow-100 dark:bg-yellow-900/30 border-yellow-200 dark:border-yellow-800",
+          "text-yellow-700 dark:text-yellow-300 !bg-yellow-100 dark:!bg-yellow-900/30 border-yellow-200 dark:border-yellow-800",
         icon: "⚠️",
       },
       spam: {
         color:
-          "text-orange-700 dark:text-orange-300 bg-orange-100 dark:bg-orange-900/30 border-orange-200 dark:border-orange-800",
+          "text-orange-700 dark:text-orange-300 !bg-orange-100 dark:!bg-orange-900/30 border-orange-200 dark:border-orange-800",
         icon: "🚫",
       },
       blocked: {
         color:
-          "text-red-800 dark:text-red-300 bg-red-200 dark:bg-red-900/40 border-red-300 dark:border-red-700",
+          "text-red-800 dark:text-red-300 !bg-red-200 dark:!bg-red-900/40 border-red-300 dark:border-red-700",
         icon: "🛡️",
       },
       unsubscribed: {
         color:
-          "text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 border-gray-200 dark:border-gray-700",
+          "!text-gray-700 dark:!text-gray-300 !bg-gray-100 dark:!bg-gray-800 !border-gray-200 dark:!border-gray-700",
         icon: "👋",
       },
       error: {
         color:
-          "text-red-700 dark:text-red-300 bg-red-100 dark:bg-red-900/30 border-red-200 dark:border-red-800",
+          "text-red-700 dark:text-red-300 !bg-red-100 dark:!bg-red-900/30 border-red-200 dark:border-red-800",
         icon: "⚡",
       },
       click: {
         color:
-          "text-purple-700 dark:text-purple-300 bg-purple-100 dark:bg-purple-900/30 border-purple-200 dark:border-purple-800",
+          "text-purple-700 dark:text-purple-300 !bg-purple-100 dark:!bg-purple-900/30 border-purple-200 dark:border-purple-800",
         icon: "🖱️",
       },
       sent: {
         color:
-          "text-cyan-700 dark:text-cyan-300 bg-cyan-100 dark:bg-cyan-900/30 border-cyan-200 dark:border-cyan-800",
+          "text-cyan-700 dark:text-cyan-300 !bg-cyan-100 dark:!bg-cyan-900/30 border-cyan-200 dark:border-cyan-800",
         icon: "📧",
       },
       default: {
         color:
-          "text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 border-gray-200 dark:border-gray-700",
+          "!text-gray-700 dark:!text-gray-300 !bg-gray-100 dark:!bg-gray-800 !border-gray-200 dark:!border-gray-700",
         icon: "📝",
       },
     };
@@ -283,21 +283,21 @@ const CampaignLogs = ({ channel, channelId, token }) => {
         return {
           icon: <FiWifi className="w-4 h-4" />,
           color:
-            "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 border-green-200 dark:border-green-800",
+            "!bg-green-100 dark:!bg-green-900/30 text-green-700 dark:text-green-300 border-green-200 dark:border-green-800",
           text: "Live",
         };
       case "CONNECTING":
         return {
           icon: <FiRefreshCw className="w-4 h-4 animate-spin" />,
           color:
-            "bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 border-yellow-200 dark:border-yellow-800",
+            "!bg-yellow-100 dark:!bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 border-yellow-200 dark:border-yellow-800",
           text: "Connecting",
         };
       default:
         return {
           icon: <FiAlertTriangle className="w-4 h-4" />,
           color:
-            "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 border-red-200 dark:border-red-800",
+            "!bg-red-100 dark:!bg-red-900/30 text-red-700 dark:text-red-300 border-red-200 dark:border-red-800",
           text: "Offline",
         };
     }
@@ -326,19 +326,19 @@ const CampaignLogs = ({ channel, channelId, token }) => {
   return (
     <div className="space-y-8">
       {/* Real-time Logs Section */}
-      <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+      <div className="!bg-white/95 dark:!bg-gray-800/95 backdrop-blur-sm rounded-2xl shadow-xl border !border-gray-200 dark:!border-gray-700 overflow-hidden">
         {/* Header */}
-        <div className="bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 dark:from-blue-900/20 dark:via-indigo-900/20 dark:to-purple-900/20 p-6 border-b border-gray-200 dark:border-gray-700">
+        <div className="!bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 dark:from-blue-900/20 dark:via-indigo-900/20 dark:to-purple-900/20 p-6 border-b !border-gray-200 dark:!border-gray-700">
           <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-4">
             <div className="flex items-center space-x-4">
-              <div className="p-3 bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900/50 dark:to-indigo-900/50 rounded-xl shadow-lg">
-                <FiActivity className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+              <div className="p-3 !bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900/50 dark:to-indigo-900/50 rounded-xl shadow-lg">
+                <FiActivity className="w-6 h-6 !text-blue-600 dark:!text-blue-400" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                <h3 className="text-2xl font-bold !text-gray-900 dark:!text-white">
                   Real-time Activity
                 </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                <p className="text-sm !text-gray-600 dark:!text-gray-400 mt-1">
                   Live email events streaming as they happen
                 </p>
               </div>
@@ -358,11 +358,11 @@ const CampaignLogs = ({ channel, channelId, token }) => {
                   id="auto-refresh"
                   checked={autoRefresh}
                   onChange={(e) => setAutoRefresh(e.target.checked)}
-                  className="w-4 h-4 text-blue-600 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded focus:ring-blue-500 focus:ring-2"
+                  className="w-4 h-4 !text-blue-600 !bg-gray-100 dark:!bg-gray-700 !border-gray-300 dark:!border-gray-600 rounded focus:ring-blue-500 focus:ring-2"
                 />
                 <label
                   htmlFor="auto-refresh"
-                  className="text-sm text-gray-700 dark:text-gray-300"
+                  className="text-sm !text-gray-700 dark:!text-gray-300"
                 >
                   Auto-scroll
                 </label>
@@ -371,7 +371,7 @@ const CampaignLogs = ({ channel, channelId, token }) => {
               {connectionState === "CLOSED" && (
                 <button
                   onClick={reconnect}
-                  className="flex items-center px-4 py-2.5 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-xl hover:from-blue-600 hover:to-indigo-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-sm font-medium"
+                  className="flex items-center px-4 py-2.5 !bg-gradient-to-r !from-blue-500 !to-indigo-500 !text-white rounded-xl hover:!from-blue-600 hover:!to-indigo-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-sm font-medium"
                 >
                   <FiRefreshCw className="w-4 h-4 mr-2" />
                   Reconnect
@@ -381,7 +381,7 @@ const CampaignLogs = ({ channel, channelId, token }) => {
               {realtimeLogs.length > 0 && (
                 <button
                   onClick={clearRealtimeLogs}
-                  className="flex items-center px-4 py-2.5 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 text-gray-700 dark:text-gray-300 rounded-xl hover:from-gray-200 hover:to-gray-300 dark:hover:from-gray-600 dark:hover:to-gray-500 transition-all duration-200 shadow-sm hover:shadow-md text-sm font-medium"
+                  className="flex items-center px-4 py-2.5 !bg-gradient-to-r !from-gray-100 !to-gray-200 dark:!from-gray-700 dark:!to-gray-600 !text-gray-700 dark:!text-gray-300 rounded-xl hover:!from-gray-200 hover:!to-gray-300 dark:hover:!from-gray-600 dark:hover:!to-gray-500 transition-all duration-200 shadow-sm hover:shadow-md text-sm font-medium"
                 >
                   <FiX className="w-4 h-4 mr-2" />
                   Clear
@@ -393,12 +393,12 @@ const CampaignLogs = ({ channel, channelId, token }) => {
 
         {/* Session Stats */}
         {Object.keys(realtimeStats).length > 0 && (
-          <div className="bg-gradient-to-r from-blue-50/50 to-indigo-50/50 dark:from-blue-900/10 dark:to-indigo-900/10 border-b border-gray-200 dark:border-gray-700 p-6">
+          <div className="!bg-gradient-to-r from-blue-50/50 to-indigo-50/50 dark:from-blue-900/10 dark:to-indigo-900/10 border-b !border-gray-200 dark:!border-gray-700 p-6">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="p-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
-                <FiBarChart className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+              <div className="p-2 !bg-white dark:!bg-gray-800 rounded-lg shadow-sm">
+                <FiBarChart className="w-5 h-5 !text-blue-600 dark:!text-blue-400" />
               </div>
-              <h4 className="text-lg font-bold text-gray-900 dark:text-white">
+              <h4 className="text-lg font-bold !text-gray-900 dark:!text-white">
                 Session Statistics
               </h4>
             </div>
@@ -410,15 +410,15 @@ const CampaignLogs = ({ channel, channelId, token }) => {
                   return (
                     <div
                       key={event}
-                      className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1"
+                      className="!bg-white/80 dark:!bg-gray-800/80 backdrop-blur-sm rounded-xl p-4 border !border-gray-200 dark:!border-gray-700 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1"
                     >
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-2xl">{config.icon}</span>
-                        <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                        <div className="text-2xl font-bold !text-gray-900 dark:!text-white">
                           {count.toLocaleString()}
                         </div>
                       </div>
-                      <div className="text-xs text-gray-600 dark:text-gray-400 capitalize font-medium">
+                      <div className="text-xs !text-gray-600 dark:!text-gray-400 capitalize font-medium">
                         {event.replace(/_/g, " ")}
                       </div>
                     </div>
@@ -430,9 +430,9 @@ const CampaignLogs = ({ channel, channelId, token }) => {
 
         {/* Error Display */}
         {wsError && (
-          <div className="bg-red-50 dark:bg-red-900/30 border-b border-red-200 dark:border-red-800 p-4">
+          <div className="!bg-red-50 dark:!bg-red-900/30 border-b border-red-200 dark:border-red-800 p-4">
             <div className="flex items-center space-x-3">
-              <div className="p-2 bg-red-100 dark:bg-red-900/50 rounded-lg">
+              <div className="p-2 !bg-red-100 dark:!bg-red-900/50 rounded-lg">
                 <FiAlertTriangle className="w-5 h-5 text-red-500" />
               </div>
               <div>
@@ -451,15 +451,15 @@ const CampaignLogs = ({ channel, channelId, token }) => {
         <div className="p-6">
           {realtimeLogs.length === 0 ? (
             <div className="text-center py-16">
-              <div className="p-4 bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900/50 dark:to-indigo-900/50 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
-                <FiMail className="w-10 h-10 text-blue-600 dark:text-blue-400" />
+              <div className="p-4 !bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900/50 dark:to-indigo-900/50 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                <FiMail className="w-10 h-10 !text-blue-600 dark:!text-blue-400" />
               </div>
-              <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              <h4 className="text-xl font-bold !text-gray-900 dark:!text-white mb-2">
                 {connectionState === "OPEN"
                   ? "Waiting for Events"
                   : "Connection Required"}
               </h4>
-              <p className="text-gray-600 dark:text-gray-400 max-w-md mx-auto">
+              <p className="!text-gray-600 dark:!text-gray-400 max-w-md mx-auto">
                 {connectionState === "OPEN"
                   ? "Real-time email events will stream here as they happen. Start your campaign to see live activity."
                   : "Please establish a connection to monitor real-time email events."}
@@ -468,30 +468,30 @@ const CampaignLogs = ({ channel, channelId, token }) => {
           ) : (
             <>
               {/* Real-time Logs Table */}
-              <div className="overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg">
+              <div className="overflow-hidden rounded-2xl border !border-gray-200 dark:!border-gray-700 shadow-lg">
                 <div className="overflow-x-auto">
                   <table className="w-full">
-                    <thead className="bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-800 dark:to-blue-900/20">
+                    <thead className="!bg-gradient-to-r !from-gray-50 to-blue-50 dark:!from-gray-800 dark:to-blue-900/20">
                       <tr>
-                        <th className="text-left px-6 py-4 text-sm font-bold text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-700">
+                        <th className="text-left px-6 py-4 text-sm font-bold !text-gray-700 dark:!text-gray-300 border-b !border-gray-200 dark:!border-gray-700">
                           <div className="flex items-center space-x-2">
                             <FiClock className="w-4 h-4" />
                             <span>Time</span>
                           </div>
                         </th>
-                        <th className="text-left px-6 py-4 text-sm font-bold text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-700">
+                        <th className="text-left px-6 py-4 text-sm font-bold !text-gray-700 dark:!text-gray-300 border-b !border-gray-200 dark:!border-gray-700">
                           <div className="flex items-center space-x-2">
                             <FiMail className="w-4 h-4" />
                             <span>Email</span>
                           </div>
                         </th>
-                        <th className="text-left px-6 py-4 text-sm font-bold text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-700">
+                        <th className="text-left px-6 py-4 text-sm font-bold !text-gray-700 dark:!text-gray-300 border-b !border-gray-200 dark:!border-gray-700">
                           <div className="flex items-center space-x-2">
                             <FiZap className="w-4 h-4" />
                             <span>Event</span>
                           </div>
                         </th>
-                        <th className="text-left px-6 py-4 text-sm font-bold text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-700">
+                        <th className="text-left px-6 py-4 text-sm font-bold !text-gray-700 dark:!text-gray-300 border-b !border-gray-200 dark:!border-gray-700">
                           <div className="flex items-center space-x-2">
                             <FiFileText className="w-4 h-4" />
                             <span>Subject</span>
@@ -499,7 +499,7 @@ const CampaignLogs = ({ channel, channelId, token }) => {
                         </th>
                       </tr>
                     </thead>
-                    <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                    <tbody className="!bg-white dark:!bg-gray-800 divide-y !divide-gray-200 dark:!divide-gray-700">
                       {paginatedRealtimeLogs.map((log, idx) => {
                         const eventConfig = getEventConfig(log.event);
                         return (
@@ -507,17 +507,17 @@ const CampaignLogs = ({ channel, channelId, token }) => {
                             key={log.id}
                             className={`${
                               idx % 2 === 0
-                                ? "bg-white dark:bg-gray-800"
-                                : "bg-gray-50/50 dark:bg-gray-700/50"
-                            } hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 dark:hover:from-blue-900/20 dark:hover:to-indigo-900/20 transition-all duration-200`}
+                                ? "!bg-white dark:!bg-gray-800"
+                                : "!bg-gray-50/50 dark:!bg-gray-700/50"
+                            } hover:!bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 dark:hover:from-blue-900/20 dark:hover:to-indigo-900/20 transition-all duration-200`}
                           >
-                            <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-100 font-mono">
+                            <td className="px-6 py-4 text-sm !text-gray-900 dark:!text-gray-100 font-mono">
                               <div className="flex items-center space-x-2">
-                                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                                <div className="w-2 h-2 !bg-green-400 rounded-full animate-pulse"></div>
                                 <span>{formatDate(log.date)}</span>
                               </div>
                             </td>
-                            <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-100 break-all max-w-xs">
+                            <td className="px-6 py-4 text-sm !text-gray-900 dark:!text-gray-100 break-all max-w-xs">
                               <div className="truncate" title={log.email}>
                                 {log.email}
                               </div>
@@ -532,7 +532,7 @@ const CampaignLogs = ({ channel, channelId, token }) => {
                                 {log.event.replace(/_/g, " ")}
                               </span>
                             </td>
-                            <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-100 max-w-xs">
+                            <td className="px-6 py-4 text-sm !text-gray-900 dark:!text-gray-100 max-w-xs">
                               <div className="truncate" title={log.subject}>
                                 {log.subject || "—"}
                               </div>
@@ -547,8 +547,8 @@ const CampaignLogs = ({ channel, channelId, token }) => {
 
               {/* Real-time Pagination */}
               {totalRealtimePages > 1 && (
-                <div className="flex flex-col sm:flex-row items-center justify-between mt-8 pt-6 border-t border-gray-200 dark:border-gray-700 gap-4">
-                  <div className="text-sm text-gray-700 dark:text-gray-300 font-medium">
+                <div className="flex flex-col sm:flex-row items-center justify-between mt-8 pt-6 border-t !border-gray-200 dark:!border-gray-700 gap-4">
+                  <div className="text-sm !text-gray-700 dark:!text-gray-300 font-medium">
                     Showing {startIndex + 1}–
                     {Math.min(endIndex, realtimeLogs.length)} of{" "}
                     {realtimeLogs.length} events
@@ -557,7 +557,7 @@ const CampaignLogs = ({ channel, channelId, token }) => {
                     <button
                       onClick={() => handleRealtimePageChange(currentPage - 1)}
                       disabled={currentPage === 1}
-                      className="flex items-center px-4 py-2.5 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 text-gray-700 dark:text-gray-300 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:from-gray-200 hover:to-gray-300 dark:hover:from-gray-600 dark:hover:to-gray-500 transition-all duration-200 shadow-sm hover:shadow-md text-sm font-medium"
+                      className="flex items-center px-4 py-2.5 !bg-gradient-to-r !from-gray-100 !to-gray-200 dark:!from-gray-700 dark:!to-gray-600 !text-gray-700 dark:!text-gray-300 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:!from-gray-200 hover:!to-gray-300 dark:hover:!from-gray-600 dark:hover:!to-gray-500 transition-all duration-200 shadow-sm hover:shadow-md text-sm font-medium"
                     >
                       <FiChevronLeft className="w-4 h-4 mr-1" />
                       Previous
@@ -574,8 +574,8 @@ const CampaignLogs = ({ channel, channelId, token }) => {
                               onClick={() => handleRealtimePageChange(page)}
                               className={`w-10 h-10 text-sm font-bold rounded-xl transition-all duration-200 ${
                                 currentPage === page
-                                  ? "bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-lg transform scale-105"
-                                  : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 shadow-sm hover:shadow-md"
+                                  ? "!bg-gradient-to-r !from-blue-500 !to-indigo-500 !text-white shadow-lg transform scale-105"
+                                  : "!bg-gray-100 dark:!bg-gray-700 !text-gray-700 dark:!text-gray-300 hover:!bg-gray-200 dark:hover:!bg-gray-600 shadow-sm hover:shadow-md"
                               }`}
                             >
                               {page}
@@ -588,7 +588,7 @@ const CampaignLogs = ({ channel, channelId, token }) => {
                     <button
                       onClick={() => handleRealtimePageChange(currentPage + 1)}
                       disabled={currentPage === totalRealtimePages}
-                      className="flex items-center px-4 py-2.5 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 text-gray-700 dark:text-gray-300 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:from-gray-200 hover:to-gray-300 dark:hover:from-gray-600 dark:hover:to-gray-500 transition-all duration-200 shadow-sm hover:shadow-md text-sm font-medium"
+                      className="flex items-center px-4 py-2.5 !bg-gradient-to-r !from-gray-100 !to-gray-200 dark:!from-gray-700 dark:!to-gray-600 !text-gray-700 dark:!text-gray-300 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:!from-gray-200 hover:!to-gray-300 dark:hover:!from-gray-600 dark:hover:!to-gray-500 transition-all duration-200 shadow-sm hover:shadow-md text-sm font-medium"
                     >
                       Next
                       <FiChevronRight className="w-4 h-4 ml-1" />
@@ -602,19 +602,19 @@ const CampaignLogs = ({ channel, channelId, token }) => {
       </div>
 
       {/* Historical Logs Section */}
-      <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+      <div className="!bg-white/95 dark:!bg-gray-800/95 backdrop-blur-sm rounded-2xl shadow-xl border !border-gray-200 dark:!border-gray-700 overflow-hidden">
         {/* Header */}
-        <div className="bg-gradient-to-r from-gray-50 via-slate-50 to-gray-50 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 p-6 border-b border-gray-200 dark:border-gray-700">
+        <div className="!bg-gradient-to-r !from-gray-50 via-slate-50 !to-gray-50 dark:!from-gray-800 dark:via-gray-700 dark:!to-gray-800 p-6 border-b !border-gray-200 dark:!border-gray-700">
           <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
             <div className="flex items-center space-x-4">
-              <div className="p-3 bg-gradient-to-br from-gray-100 to-slate-100 dark:from-gray-700 dark:to-slate-700 rounded-xl shadow-lg">
-                <FiDatabase className="w-6 h-6 text-gray-600 dark:text-gray-400" />
+              <div className="p-3 !bg-gradient-to-br !from-gray-100 to-slate-100 dark:!from-gray-700 dark:to-slate-700 rounded-xl shadow-lg">
+                <FiDatabase className="w-6 h-6 !text-gray-600 dark:!text-gray-400" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                <h3 className="text-2xl font-bold !text-gray-900 dark:!text-white">
                   Historical Events
                 </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                <p className="text-sm !text-gray-600 dark:!text-gray-400 mt-1">
                   Search and analyze past email campaign activity
                 </p>
               </div>
@@ -622,7 +622,7 @@ const CampaignLogs = ({ channel, channelId, token }) => {
 
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="flex items-center px-4 py-2.5 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-xl hover:from-blue-600 hover:to-indigo-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-sm font-medium"
+              className="flex items-center px-4 py-2.5 !bg-gradient-to-r !from-blue-500 !to-indigo-500 !text-white rounded-xl hover:!from-blue-600 hover:!to-indigo-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-sm font-medium"
             >
               <FiFilter className="w-4 h-4 mr-2" />
               {showFilters ? "Hide Filters" : "Show Filters"}
@@ -631,10 +631,10 @@ const CampaignLogs = ({ channel, channelId, token }) => {
 
           {/* Filters */}
           {showFilters && (
-            <div className="mt-6 p-6 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl border border-gray-200 dark:border-gray-700">
+            <div className="mt-6 p-6 !bg-white/80 dark:!bg-gray-800/80 backdrop-blur-sm rounded-xl border !border-gray-200 dark:!border-gray-700">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300">
+                  <label className="block text-sm font-semibold !text-gray-700 dark:!text-gray-300">
                     Event Type
                   </label>
                   <select
@@ -654,12 +654,12 @@ const CampaignLogs = ({ channel, channelId, token }) => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300">
+                  <label className="block text-sm font-semibold !text-gray-700 dark:!text-gray-300">
                     Email Address
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <FiSearch className="w-4 h-4 text-gray-400 dark:text-gray-500" />
+                      <FiSearch className="w-4 h-4 !text-gray-400 dark:!text-gray-500" />
                     </div>
                     <input
                       type="text"
@@ -674,7 +674,7 @@ const CampaignLogs = ({ channel, channelId, token }) => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300">
+                  <label className="block text-sm font-semibold !text-gray-700 dark:!text-gray-300">
                     From Date
                   </label>
                   <input
@@ -688,7 +688,7 @@ const CampaignLogs = ({ channel, channelId, token }) => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300">
+                  <label className="block text-sm font-semibold !text-gray-700 dark:!text-gray-300">
                     To Date
                   </label>
                   <input
@@ -702,12 +702,12 @@ const CampaignLogs = ({ channel, channelId, token }) => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300">
+                  <label className="block text-sm font-semibold !text-gray-700 dark:!text-gray-300">
                     Actions
                   </label>
                   <button
                     onClick={clearFilters}
-                    className="w-full px-4 py-2.5 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 text-gray-700 dark:text-gray-300 rounded-xl hover:from-gray-200 hover:to-gray-300 dark:hover:from-gray-600 dark:hover:to-gray-500 transition-all duration-200 shadow-sm hover:shadow-md text-sm font-medium"
+                    className="w-full px-4 py-2.5 !bg-gradient-to-r !from-gray-100 !to-gray-200 dark:!from-gray-700 dark:!to-gray-600 !text-gray-700 dark:!text-gray-300 rounded-xl hover:!from-gray-200 hover:!to-gray-300 dark:hover:!from-gray-600 dark:hover:!to-gray-500 transition-all duration-200 shadow-sm hover:shadow-md text-sm font-medium"
                   >
                     Clear Filters
                   </button>
@@ -718,12 +718,12 @@ const CampaignLogs = ({ channel, channelId, token }) => {
         </div>
 
         {/* Results Info */}
-        <div className="px-6 py-4 bg-gradient-to-r from-gray-50/50 to-blue-50/50 dark:from-gray-800/50 dark:to-blue-900/10 border-b border-gray-200 dark:border-gray-700">
+        <div className="px-6 py-4 !bg-gradient-to-r !from-gray-50/50 !to-blue-50/50 dark:!from-gray-800/50 dark:to-blue-900/10 border-b !border-gray-200 dark:!border-gray-700">
           <div className="flex items-center space-x-3">
-            <div className="p-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
-              <FiInfo className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+            <div className="p-2 !bg-white dark:!bg-gray-800 rounded-lg shadow-sm">
+              <FiInfo className="w-4 h-4 !text-blue-600 dark:!text-blue-400" />
             </div>
-            <div className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+            <div className="text-sm font-semibold !text-gray-700 dark:!text-gray-300">
               {pagination.totalCount > 0 ? (
                 <>
                   Showing {(pagination.page - 1) * pagination.limit + 1}–
@@ -744,25 +744,25 @@ const CampaignLogs = ({ channel, channelId, token }) => {
         <div className="p-6">
           {historicalLoading ? (
             <div className="text-center py-16">
-              <div className="p-4 bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900/50 dark:to-indigo-900/50 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
-                <FiRefreshCw className="w-10 h-10 text-blue-600 dark:text-blue-400 animate-spin" />
+              <div className="p-4 !bg-gradient-to-br !from-blue-100 !to-indigo-100 dark:!from-blue-900/50 dark:!to-indigo-900/50 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                <FiRefreshCw className="w-10 h-10 !text-blue-600 dark:!text-blue-400 animate-spin" />
               </div>
-              <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              <h4 className="text-xl font-bold !text-gray-900 dark:!text-white mb-2">
                 Loading Historical Data
               </h4>
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="!text-gray-600 dark:!text-gray-400">
                 Fetching your email campaign history...
               </p>
             </div>
           ) : historicalLogs.length === 0 ? (
             <div className="text-center py-16">
-              <div className="p-4 bg-gradient-to-br from-gray-100 to-slate-100 dark:from-gray-700 dark:to-slate-700 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
-                <FiFileText className="w-10 h-10 text-gray-400 dark:text-gray-500" />
+              <div className="p-4 !bg-gradient-to-br !from-gray-100 to-slate-100 dark:!from-gray-700 dark:to-slate-700 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                <FiFileText className="w-10 h-10 !text-gray-400 dark:!text-gray-500" />
               </div>
-              <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              <h4 className="text-xl font-bold !text-gray-900 dark:!text-white mb-2">
                 No Historical Events Found
               </h4>
-              <p className="text-gray-600 dark:text-gray-400 max-w-md mx-auto">
+              <p className="!text-gray-600 dark:!text-gray-400 max-w-md mx-auto">
                 No events match your current filter criteria. Try adjusting your
                 filters or check back after your campaign has been running.
               </p>
@@ -770,30 +770,30 @@ const CampaignLogs = ({ channel, channelId, token }) => {
           ) : (
             <>
               {/* Historical Logs Table */}
-              <div className="overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg">
+              <div className="overflow-hidden rounded-2xl border !border-gray-200 dark:!border-gray-700 shadow-lg">
                 <div className="overflow-x-auto">
                   <table className="w-full">
-                    <thead className="bg-gradient-to-r from-gray-50 to-slate-50 dark:from-gray-800 dark:to-slate-800">
+                    <thead className="!bg-gradient-to-r !from-gray-50 to-slate-50 dark:!from-gray-800 dark:!to-slate-800">
                       <tr>
-                        <th className="text-left px-6 py-4 text-sm font-bold text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-700">
+                        <th className="text-left px-6 py-4 text-sm font-bold !text-gray-700 dark:!text-gray-300 border-b !border-gray-200 dark:!border-gray-700">
                           <div className="flex items-center space-x-2">
                             <FiClock className="w-4 h-4" />
                             <span>Date & Time</span>
                           </div>
                         </th>
-                        <th className="text-left px-6 py-4 text-sm font-bold text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-700">
+                        <th className="text-left px-6 py-4 text-sm font-bold !text-gray-700 dark:!text-gray-300 border-b !border-gray-200 dark:!border-gray-700">
                           <div className="flex items-center space-x-2">
                             <FiMail className="w-4 h-4" />
                             <span>Email Address</span>
                           </div>
                         </th>
-                        <th className="text-left px-6 py-4 text-sm font-bold text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-700">
+                        <th className="text-left px-6 py-4 text-sm font-bold !text-gray-700 dark:!text-gray-300 border-b !border-gray-200 dark:!border-gray-700">
                           <div className="flex items-center space-x-2">
                             <FiZap className="w-4 h-4" />
                             <span>Event Type</span>
                           </div>
                         </th>
-                        <th className="text-left px-6 py-4 text-sm font-bold text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-700">
+                        <th className="text-left px-6 py-4 text-sm font-bold !text-gray-700 dark:!text-gray-300 border-b !border-gray-200 dark:!border-gray-700">
                           <div className="flex items-center space-x-2">
                             <FiTrendingUp className="w-4 h-4" />
                             <span>Campaign</span>
@@ -801,7 +801,7 @@ const CampaignLogs = ({ channel, channelId, token }) => {
                         </th>
                       </tr>
                     </thead>
-                    <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                    <tbody className="!bg-white dark:!bg-gray-800 divide-y !divide-gray-200 dark:!divide-gray-700">
                       {historicalLogs.map((log, idx) => {
                         const eventConfig = getEventConfig(log.event);
                         return (
@@ -809,14 +809,14 @@ const CampaignLogs = ({ channel, channelId, token }) => {
                             key={log.id}
                             className={`${
                               idx % 2 === 0
-                                ? "bg-white dark:bg-gray-800"
-                                : "bg-gray-50/50 dark:bg-gray-700/50"
-                            } hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 dark:hover:from-blue-900/20 dark:hover:to-indigo-900/20 transition-all duration-200`}
+                                ? "!bg-white dark:!bg-gray-800"
+                                : "!bg-gray-50/50 dark:!bg-gray-700/50"
+                            } hover:!bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 dark:hover:from-blue-900/20 dark:hover:to-indigo-900/20 transition-all duration-200`}
                           >
-                            <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-100 font-mono">
+                            <td className="px-6 py-4 text-sm !text-gray-900 dark:!text-gray-100 font-mono">
                               {formatDate(log.date)}
                             </td>
-                            <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-100 break-all max-w-xs">
+                            <td className="px-6 py-4 text-sm !text-gray-900 dark:!text-gray-100 break-all max-w-xs">
                               <div className="truncate" title={log.email}>
                                 {log.email}
                               </div>
@@ -831,7 +831,7 @@ const CampaignLogs = ({ channel, channelId, token }) => {
                                 {log.event.replace(/_/g, " ")}
                               </span>
                             </td>
-                            <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-100 max-w-xs">
+                            <td className="px-6 py-4 text-sm !text-gray-900 dark:!text-gray-100 max-w-xs">
                               <div
                                 className="truncate"
                                 title={log.subCampaignName}
@@ -849,15 +849,15 @@ const CampaignLogs = ({ channel, channelId, token }) => {
 
               {/* Historical Pagination */}
               {pagination.totalPages > 1 && (
-                <div className="flex flex-col sm:flex-row items-center justify-between mt-8 pt-6 border-t border-gray-200 dark:border-gray-700 gap-4">
-                  <div className="text-sm text-gray-700 dark:text-gray-300 font-medium">
+                <div className="flex flex-col sm:flex-row items-center justify-between mt-8 pt-6 border-t !border-gray-200 dark:!border-gray-700 gap-4">
+                  <div className="text-sm !text-gray-700 dark:!text-gray-300 font-medium">
                     Page {pagination.page} of {pagination.totalPages}
                   </div>
                   <div className="flex items-center space-x-2">
                     <button
                       onClick={() => fetchHistoricalLogs(pagination.page - 1)}
                       disabled={!pagination.hasPrev}
-                      className="flex items-center px-4 py-2.5 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 text-gray-700 dark:text-gray-300 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:from-gray-200 hover:to-gray-300 dark:hover:from-gray-600 dark:hover:to-gray-500 transition-all duration-200 shadow-sm hover:shadow-md text-sm font-medium"
+                      className="flex items-center px-4 py-2.5 !bg-gradient-to-r !from-gray-100 !to-gray-200 dark:!from-gray-700 dark:!to-gray-600 !text-gray-700 dark:!text-gray-300 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:!from-gray-200 hover:!to-gray-300 dark:hover:!from-gray-600 dark:hover:!to-gray-500 transition-all duration-200 shadow-sm hover:shadow-md text-sm font-medium"
                     >
                       <FiChevronLeft className="w-4 h-4 mr-2" />
                       Previous
@@ -866,7 +866,7 @@ const CampaignLogs = ({ channel, channelId, token }) => {
                     <button
                       onClick={() => fetchHistoricalLogs(pagination.page + 1)}
                       disabled={!pagination.hasNext}
-                      className="flex items-center px-4 py-2.5 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 text-gray-700 dark:text-gray-300 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:from-gray-200 hover:to-gray-300 dark:hover:from-gray-600 dark:hover:to-gray-500 transition-all duration-200 shadow-sm hover:shadow-md text-sm font-medium"
+                      className="flex items-center px-4 py-2.5 !bg-gradient-to-r !from-gray-100 !to-gray-200 dark:!from-gray-700 dark:!to-gray-600 !text-gray-700 dark:!text-gray-300 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:!from-gray-200 hover:!to-gray-300 dark:hover:!from-gray-600 dark:hover:!to-gray-500 transition-all duration-200 shadow-sm hover:shadow-md text-sm font-medium"
                     >
                       Next
                       <FiChevronRight className="w-4 h-4 ml-2" />

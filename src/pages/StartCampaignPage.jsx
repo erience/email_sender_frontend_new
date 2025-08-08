@@ -208,11 +208,13 @@ const StartCampaignPage = () => {
       const res = await getUniqueEmailsByEvents(baseId, triggerEvents);
       const count = res?.data?.count || 0;
       setUniqueEmailCount(count);
+      return count;
     } catch (error) {
       console.error("Failed to fetch unique email count", error);
       toast.error(
         error?.response?.data?.message || "Could not fetch unique email count."
       );
+      return 0;
     }
   };
 
@@ -285,10 +287,11 @@ const StartCampaignPage = () => {
     if (!isValid) {
       return;
     }
+    let uniqueEmail = 0;
     if (baseId && triggerEvents.length > 0) {
-      await fetchUniqueEmails();
+      uniqueEmail = await fetchUniqueEmails();
     }
-    const emailsCount = baseId ? uniqueEmailCount : totalEmails;
+    const emailsCount = baseId ? uniqueEmail : totalEmails;
     let rateLimit = 0;
     let delayMs = 0;
 

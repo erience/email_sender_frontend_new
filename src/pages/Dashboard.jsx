@@ -62,7 +62,7 @@ const Dashboard = () => {
       setDashboardData((prev) => ({ ...prev, loading: true }));
 
       const response = await getDashboardStats(timeRange);
-
+      console.log({ chartData: response.data.data.chartData });
       if (response.data.success) {
         setDashboardData({
           stats: response.data.data.stats,
@@ -465,27 +465,45 @@ const Dashboard = () => {
             </div>
             <div className="h-80">
               <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={dashboardData.chartData}>
+                <AreaChart
+                  data={dashboardData.chartData}
+                  margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                >
                   <CartesianGrid
                     strokeDasharray="3 3"
-                    stroke="#E5E7EB"
-                    className="dark:stroke-gray-600"
+                    stroke="#f3f4f6"
+                    className="dark:stroke-gray-700"
+                    vertical={false}
                   />
                   <XAxis
                     dataKey="date"
                     stroke="#6B7280"
                     className="dark:stroke-gray-300"
+                    tick={{ fontSize: 12, fontWeight: 500 }}
+                    axisLine={false}
+                    tickLine={false}
                   />
-                  <YAxis stroke="#6B7280" className="dark:stroke-gray-300" />
+                  <YAxis
+                    stroke="#6B7280"
+                    className="dark:stroke-gray-300"
+                    tick={{ fontSize: 12 }}
+                    axisLine={false}
+                    tickLine={false}
+                  />
                   <Tooltip
                     contentStyle={{
                       backgroundColor: "rgba(255, 255, 255, 0.95)",
                       border: "1px solid #E5E7EB",
                       borderRadius: "12px",
-                      boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
+                      boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)",
                     }}
+                    // Key fixes:
+                    filterNull={false}
+                    shared={true}
                   />
                   <Legend />
+
+                  {/* Fixed: Use consistent stackId approach like your working chart */}
                   <Area
                     type="monotone"
                     dataKey="sent"
